@@ -5,7 +5,7 @@ Este projeto é uma simples calculadora web desenvolvida com HTML, CSS e TypeScr
 ## Funcionalidades
 
 - Realiza operações de adição, subtração, multiplicação e divisão.
-- Lida com números inteiros e decimais.
+- Lida com números inteiros, decimais e negativos.
 - Exibe resultados precisos.
 
 ## Tecnologias Utilizadas
@@ -21,5 +21,5 @@ Este projeto é uma simples calculadora web desenvolvida com HTML, CSS e TypeScr
 ```bash
 git clone https://github.com/theMytt/TS_Calculator.git
 ```
-2. Abra o arquivo index.html, localizado em ```~/dist/```
+2. Abra o arquivo index.html, localizado em ```~/src/```
 3. Começe a utilizar a calculadora!
