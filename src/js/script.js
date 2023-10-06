@@ -42,12 +42,13 @@ var _loop_1 = function (i) {
     nums[i].addEventListener("click", function () {
         if (verify % 2 == 0) {
             num1 += nums[i].textContent;
-            operationResult.textContent += num1;
+            operationResult.textContent = num1;
             console.log(num1);
         }
         else {
             num2 += nums[i].textContent;
-            operationResult.textContent += num2;
+            var lastNumber = num2.slice(-1);
+            operationResult.textContent += lastNumber;
             console.log(num2);
         }
     });
@@ -60,6 +61,8 @@ var _loop_2 = function (i) {
         operates = operate[i].textContent;
         if (operates == "C") {
             operationResult.textContent = "";
+            num1 = "";
+            num2 = "";
             verify = 0;
         }
         else {
