@@ -50,11 +50,11 @@ for (let i = 0; i < nums.length; i++) {
     nums[i].addEventListener("click", function() {        
         if (verify % 2 == 0) {
             num1 += nums[i].textContent;
-            operationResult.textContent = num1;
+            operationResult.textContent += num1;
             console.log(num1);
         }else {
             num2 += nums[i].textContent;
-            operationResult.textContent = num2;
+            operationResult.textContent += num2;
             console.log(num2);
         }
     });
@@ -67,7 +67,7 @@ for (let i = 0; i < operate.length; i++) {
             operationResult.textContent = "";
             verify = 0;
         }else {
-            operationResult.textContent = operates;
+            operationResult.textContent += operates;
             verify++;
         }
         console.log(operates);
