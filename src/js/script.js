@@ -1,22 +1,22 @@
 "use strict";
-var _a;
-var nums = document.getElementsByClassName("num");
-var operate = document.getElementsByClassName("operations");
-var operationResult = document.getElementById("operationResult");
-var finalResult = document.getElementById("final");
-var num1 = "";
-var num2 = "";
-var operates = "";
-var verify = 0;
+const nums = document.getElementsByClassName("num");
+const operate = document.getElementsByClassName("operations");
+const operationResult = document.getElementById("operationResult");
+const finalResult = document.getElementById("final");
+const percentBtn = document.getElementById("percentBtn");
+let num1 = "";
+let num2 = "";
+let operates = "";
+let verify = 0;
 var screenCalc;
 var result = 0;
 var _temp;
 ;
-var operation = {
-    plus: function (a, b) { return a + b; },
-    minus: function (a, b) { return a - b; },
-    times: function (a, b) { return a * b; },
-    divide: function (a, b) {
+const operation = {
+    plus: (a, b) => a + b,
+    minus: (a, b) => a - b,
+    times: (a, b) => a * b,
+    divide: (a, b) => {
         if (a === 0 || b === 0) {
             return 0;
         }
@@ -24,7 +24,7 @@ var operation = {
             return a / b;
         }
     },
-    percent: function (a) {
+    percent: (a) => {
         if (a === 0) {
             return 0;
         }
@@ -32,31 +32,30 @@ var operation = {
             return a / 100;
         }
     },
-    negative: function (a) {
-        _temp = a * 2;
-        a -= _temp;
-        return a;
-    }
 };
-var _loop_1 = function (i) {
+percentBtn.addEventListener("click", function () {
+    result = operation.percent(parseFloat(num1));
+    operationResult.textContent = result;
+    num1 = result.toString();
+});
+for (let i = 0; i < nums.length; i++) {
     nums[i].addEventListener("click", function () {
         if (verify % 2 == 0) {
+            // VerifyDot(0);
             num1 += nums[i].textContent;
             operationResult.textContent = num1;
             console.log(num1);
         }
         else {
+            // VerifyDot(1);
             num2 += nums[i].textContent;
-            var lastNumber = num2.slice(-1);
+            let lastNumber = num2.slice(-1);
             operationResult.textContent += lastNumber;
             console.log(num2);
         }
     });
-};
-for (var i = 0; i < nums.length; i++) {
-    _loop_1(i);
 }
-var _loop_2 = function (i) {
+for (let i = 0; i < operate.length; i++) {
     operate[i].addEventListener("click", function () {
         operates = operate[i].textContent;
         if (operates == "C") {
@@ -65,17 +64,17 @@ var _loop_2 = function (i) {
             num2 = "";
             verify = 0;
         }
+        else if (operates == "%") {
+            verify++;
+        }
         else {
             operationResult.textContent += operates;
             verify++;
         }
         console.log(operates);
     });
-};
-for (var i = 0; i < operate.length; i++) {
-    _loop_2(i);
 }
-finalResult.addEventListener("click", function () {
+finalResult.addEventListener("click", () => {
     if (num1 != "" && operates != "") {
         switch (operates) {
             case "+":
@@ -102,16 +101,10 @@ finalResult.addEventListener("click", function () {
                 num1 = "";
                 num2 = "";
                 break;
-            case "%":
-                num2 = "";
-                result = operation.percent(parseFloat(num1));
-                operationResult.textContent = result;
-                num1 = "";
-                break;
         }
     }
 });
-(_a = document.getElementById("plusMinus")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", function () {
+document.getElementById("plusMinus")?.addEventListener("click", function () {
     num1 = "-" + num1;
     operationResult.textContent = num1;
 });
