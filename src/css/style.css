@@ -33,7 +33,7 @@ button {
     background: rgba(255,255,255, 0.4);
 }
 
-.operations, #plusMinus, #percentBtn {
+.operations, #plusMinus, #percentBtn, #final {
     background: rgba(255,255,255, 0.2);
 }
 

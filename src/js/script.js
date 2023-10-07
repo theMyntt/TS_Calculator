@@ -137,7 +137,7 @@ finalResult.addEventListener("click", function () {
     }
 });
 (_a = document.getElementById("plusMinus")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", function () {
+    num1Text.textContent = "−" + num1;
     num1 = "-" + num1;
-    num1Text.textContent = num1;
 });
 // operates == "+" || operates == "−" || operates == "×" || operates == "÷"

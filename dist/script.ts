@@ -145,8 +145,9 @@ finalResult.addEventListener("click", () => {
 });
 
 document.getElementById("plusMinus")?.addEventListener("click", function () {
+    num1Text.textContent = "−" + num1;
     num1 = "-" + num1;
-    num1Text.textContent = num1;
+    
 });
 
 // operates == "+" || operates == "−" || operates == "×" || operates == "÷"
