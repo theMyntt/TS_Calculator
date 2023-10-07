@@ -4,14 +4,19 @@ const operationResult: any = document.getElementById("operationResult") as HTMLP
 const finalResult: any = document.getElementById("final") as HTMLButtonElement;
 const percentBtn: any = document.getElementById("percentBtn") as HTMLButtonElement;
 
+const num1Text: any = document.getElementById("num1Text") as HTMLElement;
+const num2Text = document.getElementById("num2Text") as HTMLElement;
+const operateText = document.getElementById("operation") as HTMLElement
+
 let num1: string = "";
 let num2: string = "";
+let numbersInDot: any = [num1, num2];
 let operates: string = "";
 let verify: number = 0;
 
 var screenCalc: string;
 var result: number = 0;
-var _temp;
+var _temp; //
 
 interface Operations {
     plus(a: number, b: number): number;
@@ -41,26 +46,38 @@ const operation: Operations = {
     },
 };
 
+function VerifyDot() {
+    if (num1 === "." || num2 == ".") {
+        if (num1 == ".") {
+            num1 = "0" + num1;
+            return num1;
+        }else{
+            num2 = "0" + num2;
+            return num2
+        }
+        
+    }
+}
 
 percentBtn.addEventListener("click", function() {
     result = operation.percent(parseFloat(num1));
-    operationResult.textContent = result;
+    num1Text.textContent = result;
     num1 = result.toString();
 });
 
 for (let i = 0; i < nums.length; i++) {
     nums[i].addEventListener("click", function () {
         if (verify % 2 == 0) {
-            // VerifyDot(0);
-            num1 += nums[i].textContent;
             
-            operationResult.textContent = num1;
+            num1 += nums[i].textContent;
+            VerifyDot();
+            num1Text.textContent = num1;
             console.log(num1);
         } else {
-            // VerifyDot(1);
             num2 += nums[i].textContent;
-            let lastNumber = num2.slice(-1);
-            operationResult.textContent += lastNumber;
+            VerifyDot();
+            
+            num2Text.textContent = num2;
             console.log(num2);
         }
     });
@@ -70,7 +87,9 @@ for (let i = 0; i < operate.length; i++) {
     operate[i].addEventListener("click", function () {
         operates = operate[i].textContent;
         if (operates == "C") {
-            operationResult.textContent = "";
+            num1Text.textContent = "0";
+            num2Text.textContent = "";
+            operateText.textContent = "";
             num1 = "";
             num2 = "";
             verify = 0;
@@ -78,7 +97,7 @@ for (let i = 0; i < operate.length; i++) {
         else if (operates == "%") {
             verify++;
         } else {
-            operationResult.textContent += operates;
+            operateText.textContent += ` ${operates} `;
             verify++;
         }
         console.log(operates);
@@ -90,25 +109,33 @@ finalResult.addEventListener("click", () => {
         switch (operates) {
             case "+":
                 result = operation.plus(parseFloat(num1), parseFloat(num2));
-                operationResult.textContent = result;
+                num1Text.textContent = result;
+                num2Text.textContent = "";
+                operateText.textContent = "";
                 num1 = "";
                 num2 = "";
                 break;
             case "−":
                 result = operation.minus(parseFloat(num1), parseFloat(num2));
-                operationResult.textContent = result;
+                num1Text.textContent = result;
+                num2Text.textContent = "";
+                operateText.textContent = "";
                 num1 = "";
                 num2 = "";
                 break;
             case "×":
                 result = operation.times(parseFloat(num1), parseFloat(num2));
-                operationResult.textContent = result;
+                num1Text.textContent = result;
+                num2Text.textContent = "";
+                operateText.textContent = "";
                 num1 = "";
                 num2 = "";
                 break;
             case "÷":
                 result = operation.divide(parseFloat(num1), parseFloat(num2));
-                operationResult.textContent = result;
+                num1Text.textContent = result;
+                num2Text.textContent = "";
+                operateText.textContent = "";
                 num1 = "";
                 num2 = "";
                 break;
@@ -119,7 +146,7 @@ finalResult.addEventListener("click", () => {
 
 document.getElementById("plusMinus")?.addEventListener("click", function () {
     num1 = "-" + num1;
-    operationResult.textContent = num1;
+    num1Text.textContent = num1;
 });
 
 // operates == "+" || operates == "−" || operates == "×" || operates == "÷"
