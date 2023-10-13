@@ -5,7 +5,7 @@ const finalResult: any = document.getElementById("final") as HTMLButtonElement;
 const percentBtn: any = document.getElementById("percentBtn") as HTMLButtonElement;
 
 const num1Text: any = document.getElementById("num1Text") as HTMLElement;
-const num2Text = document.getElementById("num2Text") as HTMLElement;
+const num2Text: any = document.getElementById("num2Text") as HTMLElement;
 const operateText = document.getElementById("operation") as HTMLElement
 
 let num1: string = "";
@@ -51,24 +51,30 @@ function VerifyDot() {
         if (num1 == ".") {
             num1 = "0" + num1;
             return num1;
-        }else{
+        } else {
             num2 = "0" + num2;
             return num2
         }
-        
+
     }
 }
 
-percentBtn.addEventListener("click", function() {
-    result = operation.percent(parseFloat(num1));
-    num1Text.textContent = result;
-    num1 = result.toString();
+percentBtn.addEventListener("click", function () {
+    if (verify % 2 == 0) {
+        result = operation.percent(parseFloat(num1));
+        num1Text.textContent = result;
+        num1 = result.toString();
+    } else {
+        result = operation.percent(parseFloat(num2));
+        num2Text.textContent = result;
+        num2 = result.toString();
+    }
+
 });
 
 for (let i = 0; i < nums.length; i++) {
     nums[i].addEventListener("click", function () {
         if (verify % 2 == 0) {
-            
             num1 += nums[i].textContent;
             VerifyDot();
             num1Text.textContent = num1;
@@ -76,7 +82,6 @@ for (let i = 0; i < nums.length; i++) {
         } else {
             num2 += nums[i].textContent;
             VerifyDot();
-            
             num2Text.textContent = num2;
             console.log(num2);
         }
@@ -86,14 +91,14 @@ for (let i = 0; i < nums.length; i++) {
 for (let i = 0; i < operate.length; i++) {
     operate[i].addEventListener("click", function () {
         operates = operate[i].textContent;
-        if (operates == "C") {
+        if (operates == "AC") {
             num1Text.textContent = "0";
             num2Text.textContent = "";
             operateText.textContent = "";
             num1 = "";
             num2 = "";
             verify = 0;
-        } 
+        }
         else if (operates == "%") {
             verify++;
         } else {
@@ -145,9 +150,13 @@ finalResult.addEventListener("click", () => {
 });
 
 document.getElementById("plusMinus")?.addEventListener("click", function () {
-    num1Text.textContent = "−" + num1;
-    num1 = "-" + num1;
-    
+    if (verify % 2 == 0) {
+        num1Text.textContent = "−" + num1;
+        num1 = "-" + num1;
+    } else {
+        num2Text.textContent = "−" + num2;
+        num2 = "-" + num2;
+    }
 });
 
 // operates == "+" || operates == "−" || operates == "×" || operates == "÷"

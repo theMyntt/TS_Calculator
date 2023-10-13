@@ -51,9 +51,16 @@ function VerifyDot() {
     }
 }
 percentBtn.addEventListener("click", function () {
-    result = operation.percent(parseFloat(num1));
-    num1Text.textContent = result;
-    num1 = result.toString();
+    if (verify % 2 == 0) {
+        result = operation.percent(parseFloat(num1));
+        num1Text.textContent = result;
+        num1 = result.toString();
+    }
+    else {
+        result = operation.percent(parseFloat(num2));
+        num2Text.textContent = result;
+        num2 = result.toString();
+    }
 });
 var _loop_1 = function (i) {
     nums[i].addEventListener("click", function () {
@@ -77,7 +84,7 @@ for (var i = 0; i < nums.length; i++) {
 var _loop_2 = function (i) {
     operate[i].addEventListener("click", function () {
         operates = operate[i].textContent;
-        if (operates == "C") {
+        if (operates == "AC") {
             num1Text.textContent = "0";
             num2Text.textContent = "";
             operateText.textContent = "";
@@ -137,7 +144,13 @@ finalResult.addEventListener("click", function () {
     }
 });
 (_a = document.getElementById("plusMinus")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", function () {
-    num1Text.textContent = "−" + num1;
-    num1 = "-" + num1;
+    if (verify % 2 == 0) {
+        num1Text.textContent = "−" + num1;
+        num1 = "-" + num1;
+    }
+    else {
+        num2Text.textContent = "−" + num2;
+        num2 = "-" + num2;
+    }
 });
 // operates == "+" || operates == "−" || operates == "×" || operates == "÷"
