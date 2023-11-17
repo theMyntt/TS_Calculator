@@ -3,7 +3,7 @@ var _a;
 var nums = document.getElementsByClassName("num");
 var operate = document.getElementsByClassName("operations");
 var operationResult = document.getElementById("operationResult");
-var finalResult = document.getElementById("final");
+// const finalResult: any = document.getElementById("final") as HTMLButtonElement;
 var percentBtn = document.getElementById("percentBtn");
 var num1Text = document.getElementById("num1Text");
 var num2Text = document.getElementById("num2Text");
@@ -16,7 +16,6 @@ var verify = 0;
 var screenCalc;
 var result = 0;
 var _temp; //
-;
 var operation = {
     plus: function (a, b) { return a + b; },
     minus: function (a, b) { return a - b; },
@@ -85,7 +84,7 @@ var _loop_2 = function (i) {
     operate[i].addEventListener("click", function () {
         operates = operate[i].textContent;
         if (operates == "AC") {
-            num1Text.textContent = "0";
+            num1Text.textContent = "";
             num2Text.textContent = "";
             operateText.textContent = "";
             num1 = "";
@@ -105,7 +104,7 @@ var _loop_2 = function (i) {
 for (var i = 0; i < operate.length; i++) {
     _loop_2(i);
 }
-finalResult.addEventListener("click", function () {
+function finalResult() {
     if (num1 != "" && operates != "") {
         switch (operates) {
             case "+":
@@ -142,7 +141,8 @@ finalResult.addEventListener("click", function () {
                 break;
         }
     }
-});
+}
+;
 (_a = document.getElementById("plusMinus")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", function () {
     if (verify % 2 == 0) {
         num1Text.textContent = "−" + num1;
@@ -153,4 +153,29 @@ finalResult.addEventListener("click", function () {
         num2 = "-" + num2;
     }
 });
-// operates == "+" || operates == "−" || operates == "×" || operates == "÷"
+document.addEventListener("keydown", function (e) {
+    if (e.key == "Enter") {
+        finalResult();
+    }
+    else if (e.key == "Shift") {
+        return;
+    }
+    else {
+        if (e.key == "+" || e.key == "-" || e.key == "/" || e.key == "*") {
+            operates = (e.key == "-") ? "−" :
+                (e.key == "/") ? "÷" :
+                    (e.key == "*") ? "×" : "+";
+            operateText.textContent += operates;
+        }
+        else if (verify % 2 == 0) {
+            num1Text.textContent += e.key;
+            num1 += e.key;
+            verify++;
+        }
+        else {
+            num2Text.textContent += e.key;
+            num2 += e.key;
+            verify++;
+        }
+    }
+});

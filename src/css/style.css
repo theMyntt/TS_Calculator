@@ -1,58 +1,62 @@
 * {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-image: url("../img/catalina.jpg");
-    background-position-x: center;
-    background-position-y: 45%;
-    background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url("../img/catalina.jpg");
+  background-position-x: center;
+  background-position-y: 45%;
+  background-size: cover;
 }
 
 main {
-    background-color: rgba(255, 255, 255, 0);
-    backdrop-filter: blur(10px);
-    padding: 50px;
-    border-radius: 15px;
-    border: 4px rgba(255,255,255, 0.4) solid;
+  background-color: rgba(255, 255, 255, 0);
+  backdrop-filter: blur(10px);
+  padding: 50px;
+  border-radius: 15px;
+  border: 4px rgba(255, 255, 255, 0.4) solid;
 }
 
 button {
-    width: 50px; height: 50px;
-    margin: 5px;
-    border: 0;
-    color: #FFF;
-    border-radius: 10px;
-    /*background-color: #fff;*/
-    font-size: 16px;
-    background: rgba(255,255,255, 0.4);
+  width: 50px;
+  height: 50px;
+  margin: 5px;
+  border: 0;
+  color: #fff;
+  border-radius: 10px;
+  /*background-color: #fff;*/
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.4);
 }
 
-.operations, #plusMinus, #percentBtn, #final {
-    background: rgba(255,255,255, 0.2);
+.operations,
+#plusMinus,
+#percentBtn,
+#final {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 #operationResult {
-    /* width: 100vw; */
-    height: 50px;
-    background: rgba(255,255,255, 0);
-    color: #fff;
-    border-radius: 10px;
-    border: 0;
-    display: flex;
-    padding: 0 5px;
-    align-items: center;
-    margin-bottom: 5px;
-    font-size: 25px;
-    text-align: right;
+  /* width: 100vw; */
+  height: 50px;
+  background: rgba(255, 255, 255, 0);
+  color: #fff;
+  border-radius: 10px;
+  border: 0;
+  display: flex;
+  padding: 0 5px;
+  align-items: center;
+  margin-bottom: 5px;
+  font-size: 25px;
+  text-align: right;
 }
 
 .result {
-    display: flex;
-    justify-content: right;
+  display: flex;
+  justify-content: right;
 }
